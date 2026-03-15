@@ -3,14 +3,8 @@ import mediapipe as mp
 import numpy as np
 import io
 
-from mediapipe.tasks import python
-from mediapipe.tasks.python import vision
-
-# We will need the pose landmarker model. But since we might not have it locally
-# for this quick takehome, let's fall back to trying direct solutions if they exist
-# wait, my previous check of `mp` dir showed solutions wasn't there at root.
-# Let's import it properly. Sometimes it's nested.
-import mediapipe.python.solutions.pose as mp_pose
+# Use the public mediapipe API (works on all platforms including Linux)
+mp_pose = mp.solutions.pose
 
 def calculate_distance(p1, p2):
     """Calculates 3D Euclidean distance between two landmarks."""
