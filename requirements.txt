@@ -1,8 +1,8 @@
 fastapi
 uvicorn
+gunicorn
 python-multipart
 mediapipe
 opencv-python-headless
 numpy
 pydantic
-gunicorn
