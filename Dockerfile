@@ -4,7 +4,6 @@ ENV PYTHONUNBUFFERED=1
 
 WORKDIR /app
 
-# Install system dependencies for OpenCV + MediaPipe
 RUN apt-get update && apt-get install -y \
     libgl1 \
     libglib2.0-0 \
@@ -19,4 +18,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-CMD ["gunicorn", "main:app", "-k", "uvicorn.workers.UvicornWorker", "--bind", "0.0.0.0:8080"]
+CMD gunicorn main:app -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:${PORT:-8080}
