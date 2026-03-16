@@ -16,4 +16,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-CMD sh -c "gunicorn -k uvicorn.workers.UvicornWorker -b 0.0.0.0:${PORT:-8080} main:app"
+CMD ["python", "main.py"]
