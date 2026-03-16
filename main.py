@@ -1,6 +1,8 @@
 from fastapi import FastAPI, File, UploadFile, Form
 from pydantic import BaseModel
 from vision import extract_measurements
+import os
+import uvicorn
 
 app = FastAPI(
     title="Body Measurement API",
@@ -26,3 +28,7 @@ async def get_measurements(
     image_bytes = await file.read()
     measurements = extract_measurements(image_bytes, reference_height_cm)
     return MeasurementResponse(**measurements)
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8080))
+    uvicorn.run("main:app", host="0.0.0.0", port=port)
