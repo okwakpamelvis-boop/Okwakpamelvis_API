@@ -6,3 +6,6 @@ mediapipe
 opencv-python-headless
 numpy
 pydantic
+
+
+
